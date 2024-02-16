@@ -1,0 +1,31 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Moving Cube Example</title>
+</head>
+<body>
+    <script>
+        let mousePosition = { x: 0, y: 0 };
+
+        function updateCursorPosition(event) {
+            mousePosition = { x: event.clientX, y: event.clientY - 60};
+        }
+
+        document.addEventListener('mousemove', updateCursorPosition);
+    </script>    
+
+    <canvas id="metaballsCanvas"></canvas>
+    <script src="~/js/Metaballs.js"></script>
+
+    <div id="fpsCounter" style="position: fixed; top: 10px; left: 10px; background-color: rgba(0, 0, 0, 0.5); color: #fff; padding: 5px;"></div>
+    <script src="~/js/FPS.js"></script>
+</body>
+</html>
