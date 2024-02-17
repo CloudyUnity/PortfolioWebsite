@@ -1,7 +1,7 @@
 ﻿@page
-@model IndexModel
+@model PortfolioWebsite.Pages.Projects2Model
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Projects2";
 }
 
 <html lang="en">
@@ -11,24 +11,25 @@
     <link rel="stylesheet" href="~/css/site.css">
 </head>
 <body>
+    <h1>@ViewData["Title"]</h1>
     <canvas id="metaballsCanvas"></canvas>
     <script>
         let mousePosition = { x: 0, y: 0 };
-
         function updateCursorPosition(event) {
             mousePosition = { x: event.clientX, y: event.clientY - 60 };
         }
-
         document.addEventListener('mousemove', updateCursorPosition);
 
         const canvas = document.getElementById('metaballsCanvas');
         canvas.width = window.innerWidth;
         canvas.height = (window.innerHeight - 60);
 
+        var count = 8;
         const metaballsClusters = [
-            { x: 100, y: 100, count: 10, metaballs: [], ref: "/Index", name: "Home", newTab: false },
-            { x: canvas.width - 300, y: 100, count: 10, metaballs: [], ref: "/Projects", name: "Projects", newTab: false },
-            { x: canvas.width / 2, y: canvas.height - 150, count: 15, metaballs: [], ref: "https://github.com/CloudyUnity/PortfolioWebsite", name: "Github", newTab: true }
+            { x: 100, y: 100, count: count, metaballs: [], ref: "/Projects", name: "Return", newTab: false },
+            { x: 100, y: canvas.height - 100, count: count, metaballs: [], ref: "/Projects2", name: "Portfolio Site", newTab: false },
+            { x: canvas.width - 150, y: 100, count: count, metaballs: [], ref: "/Projects2", name: "Magpies!", newTab: false },
+            { x: canvas.width - 150, y: canvas.height - 100, count: count, metaballs: [], ref: "/Projects2", name: "WrightARM", newTab: false }
         ];
     </script>
 

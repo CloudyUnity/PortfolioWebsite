@@ -1,7 +1,7 @@
 ﻿@page
-@model IndexModel
+@model PortfolioWebsite.Pages.ProjectsModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Projects";
 }
 
 <html lang="en">
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/css/site.css">
 </head>
 <body>
+    <h1>@ViewData["Title"]</h1>
     <canvas id="metaballsCanvas"></canvas>
     <script>
         let mousePosition = { x: 0, y: 0 };
@@ -25,10 +26,14 @@
         canvas.width = window.innerWidth;
         canvas.height = (window.innerHeight - 60);
 
+        var count = 8;
         const metaballsClusters = [
-            { x: 100, y: 100, count: 10, metaballs: [], ref: "/Index", name: "Home", newTab: false },
-            { x: canvas.width - 300, y: 100, count: 10, metaballs: [], ref: "/Projects", name: "Projects", newTab: false },
-            { x: canvas.width / 2, y: canvas.height - 150, count: 15, metaballs: [], ref: "https://github.com/CloudyUnity/PortfolioWebsite", name: "Github", newTab: true }
+            { x: 100, y: 100, count: count, metaballs: [], ref: "/Index", name: "Return", newTab: false },
+            { x: 100, y: canvas.height - 100, count: count, metaballs: [], ref: "/Projects", name: "Assembler/Compiler", newTab: false },
+            { x: canvas.width / 2, y: 100, count: count, metaballs: [], ref: "/Forebloomed", name: "Forebloomed", newTab: false },
+            { x: canvas.width / 2, y: canvas.height - 100, count: count, metaballs: [], ref: "/Projects", name: "Graphics Engine", newTab: false },           
+            { x: canvas.width - 150, y: 100, count: count, metaballs: [], ref: "/Projects", name: "Genetic AI", newTab: false },            
+            { x: canvas.width - 150, y: canvas.height - 100, count: count+2, metaballs: [], ref: "/Projects2", name: "Next Page", newTab: false }
         ];
     </script>
 

@@ -1,8 +1,4 @@
-﻿const canvas = document.getElementById('metaballsCanvas');
-canvas.width = window.innerWidth;
-canvas.height = (window.innerHeight - 60);
-
-const ctx = canvas.getContext('2d', { alpha: false }, { willReadFrequently: true });
+﻿const ctx = canvas.getContext('2d', { alpha: false }, { willReadFrequently: true });
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 canvas.width = window.innerWidth;
@@ -18,19 +14,14 @@ var bpp = 4;
 
 var startTime = performance.now();
 
-const metaballsClusters = [
-    { x: 100, y: 100, count: 10, metaballs : [], ref: "/Index", name: "Home" },
-    { x: 800, y: 500, count: 15, metaballs: [], ref: "/Privacy", name: "Privacy" }
-];
-
 const metaballs = [
     { x: 0, y: 0, radius: 30 }
 ];
 
 for (var i = 0; i < metaballsClusters.length; i++) {
     for (var m = 0; m < metaballsClusters[i].count; m++) {
-        var randX = Math.random() * canvas.width;
-        var randY = Math.random() * canvas.height;
+        var randX = Math.random() * 100 + metaballsClusters[i].x;
+        var randY = Math.random() * 100 + metaballsClusters[i].y;
         var randRadi = Math.random() * 100 + 40 - m;
 
         metaballsClusters[i].metaballs.push({ x: randX, y: randY, radius: randRadi });
@@ -46,12 +37,16 @@ function sumMetaballs(x, y, metaballs) {
 
     for (var i = 0; i < metaballs.length; i++) {
         sum += distance(x, y, metaballs[i].x, metaballs[i].y, metaballs[i].radius);
+        if (sum > borderSize)
+            return sum;
     }
 
     for (var i = 0; i < metaballsClusters.length; i++) {
         for (var m = 0; m < metaballsClusters[i].count; m++) {
             sum += distance(x, y, metaballsClusters[i].metaballs[m].x, metaballsClusters[i].metaballs[m].y, metaballsClusters[i].metaballs[m].radius);
-        }
+            if (sum > borderSize)
+                return sum;
+        }        
     }
 
     return sum;
@@ -93,7 +88,7 @@ function drawMetaballs() {
 
     for (var i = 0; i < metaballsClusters.length; i++) {
         for (var m = 0; m < metaballsClusters[i].count; m++) {
-            var x = Math.cos(deltaTime * speed + m ** 3) * (m+1) * dist;
+            var x = Math.cos(deltaTime * speed + m ** 3 + metaballsClusters[i].x + metaballsClusters[i].y) * (m + 1) * dist;
             var y = Math.sin(deltaTime * speed + m ** 2) * (m+1) * dist;
 
             x += metaballsClusters[i].x;
@@ -125,7 +120,8 @@ function drawMetaballs() {
 
         if (seen && !hit) {
             for (var j = -p05; j < 0; j++) {
-                checkPixel(i + j, imageData);                    
+                if (!checkPixel(i + j, imageData))
+                    break;
             }    
 
             seen = false;
@@ -146,6 +142,7 @@ function drawMetaballs() {
     ctx.putImageData(imageData, 0, 0);
 
     ctx.font = "bold 18px Arial";
+    ctx.textAlign = 'center';
     for (var i = 0; i < metaballsClusters.length; i++) {
         ctx.fillText(metaballsClusters[i].name, metaballsClusters[i].x, metaballsClusters[i].y);
     }
@@ -169,7 +166,10 @@ document.addEventListener('mousedown', function (event) {
         if (!checkPositionWithinBalls(mousePosition.x, mousePosition.y, metaballsClusters[i].metaballs))
             continue;
 
-        window.location.replace(metaballsClusters[i].ref);
+        if (metaballsClusters[i].newTab)
+            window.open(metaballsClusters[i].ref, '_blank');
+        else
+            window.location.replace(metaballsClusters[i].ref);
         return;
     }
 });

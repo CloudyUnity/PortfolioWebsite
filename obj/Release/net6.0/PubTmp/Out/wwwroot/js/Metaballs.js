@@ -19,8 +19,8 @@ var bpp = 4;
 var startTime = performance.now();
 
 const metaballsClusters = [
-    { x: 100, y: 100, count: 10, metaballs : [], ref: "/Index", name: "Home" },
-    { x: 800, y: 500, count: 15, metaballs: [], ref: "/Privacy", name: "Privacy" }
+    { x: 100, y: 100, count: 10, metaballs : [], ref: "/Index", name: "Home", newTab: false },
+    { x: 800, y: 500, count: 15, metaballs: [], ref: "https://github.com/CloudyUnity/PortfolioWebsite", name: "Github", newTab: true }
 ];
 
 const metaballs = [
@@ -29,8 +29,8 @@ const metaballs = [
 
 for (var i = 0; i < metaballsClusters.length; i++) {
     for (var m = 0; m < metaballsClusters[i].count; m++) {
-        var randX = Math.random() * canvas.width;
-        var randY = Math.random() * canvas.height;
+        var randX = Math.random() * 100 + metaballsClusters[i].x;
+        var randY = Math.random() * 100 + metaballsClusters[i].y;
         var randRadi = Math.random() * 100 + 40 - m;
 
         metaballsClusters[i].metaballs.push({ x: randX, y: randY, radius: randRadi });
@@ -169,7 +169,10 @@ document.addEventListener('mousedown', function (event) {
         if (!checkPositionWithinBalls(mousePosition.x, mousePosition.y, metaballsClusters[i].metaballs))
             continue;
 
-        window.location.replace(metaballsClusters[i].ref);
+        if (metaballsClusters[i].newTab)
+            window.open(metaballsClusters[i].ref, '_blank');
+        else
+            window.location.replace(metaballsClusters[i].ref);
         return;
     }
 });

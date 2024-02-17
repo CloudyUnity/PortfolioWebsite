@@ -19,12 +19,24 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/finnw/source/repos/PortfolioWebsite/PortfolioWebsite/Pages/Forebloomed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9yZWJsb29tZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/finnw/source/repos/PortfolioWebsite/PortfolioWebsite/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/finnw/source/repos/PortfolioWebsite/PortfolioWebsite/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/finnw/source/repos/PortfolioWebsite/PortfolioWebsite/Pages/Projects.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvamVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/finnw/source/repos/PortfolioWebsite/PortfolioWebsite/Pages/Projects2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvamVjdHMyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/finnw/source/repos/PortfolioWebsite/PortfolioWebsite/Pages/Shared/_ValidationScriptsPartial.cshtml]
